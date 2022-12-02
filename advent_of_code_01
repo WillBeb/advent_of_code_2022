@@ -1,0 +1,24 @@
+#'data' file holds the data given by the challenge
+#I copied over the the data over from the challege website into a vs code file that I left saved as Plain Text
+
+#Part 1
+file = open('data', 'r')
+nums = file.read()
+
+sums = []
+count = 0
+for l in nums.split('\n'):
+
+    try:
+        count += float(l)
+    except ValueError:
+        sums.append(count)
+        count = 0
+
+max(sums)
+
+#Part 2
+sums.sort(reverse=True)
+sums[0]+sums[1]+sums[2]
+
+file.close()
