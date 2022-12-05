@@ -1,0 +1,83 @@
+file_02 = open('data_02', 'r')
+pairs = file_02.read()
+
+split_pairs = pairs.split('\n')
+
+encrypt = {'A':'Rock','B':'Paper', 'C':'Scizzors', 
+        'X':'Rock', 'Y':'Paper', 'Z':'Scizzors'}
+
+
+#Part 1
+
+score = 0
+
+for i in range(len(split_pairs)):
+
+    if encrypt[(split_pairs[i].split())[0]] == 'Rock':
+        if encrypt[(split_pairs[i].split())[1]] == 'Rock': 
+            score += 4
+        elif encrypt[(split_pairs[i].split())[1]] == 'Paper':
+            score += 8
+        elif encrypt[(split_pairs[i].split())[1]] == 'Scizzors':
+            score += 3
+
+    elif encrypt[(split_pairs[i].split())[0]] == 'Paper':
+        if encrypt[(split_pairs[i].split())[1]] == 'Rock': 
+            score += 1
+        elif encrypt[(split_pairs[i].split())[1]] == 'Paper':
+            score += 5
+        elif encrypt[(split_pairs[i].split())[1]] == 'Scizzors':
+            score += 9
+
+    elif encrypt[(split_pairs[i].split())[0]] == 'Scizzors':
+        if encrypt[(split_pairs[i].split())[1]] == 'Rock': 
+            score += 7
+        elif encrypt[(split_pairs[i].split())[1]] == 'Paper':
+            score += 2
+        elif encrypt[(split_pairs[i].split())[1]] == 'Scizzors':
+            score += 6
+
+score
+
+
+
+
+
+#Part 2
+
+
+encrypt = {'A':'Rock','B':'Paper', 'C':'Scizzors', 
+        'X':'Lose', 'Y':'Draw', 'Z':'Win'}
+
+
+score = 0
+
+for i in range(len(split_pairs)):
+
+    if encrypt[(split_pairs[i].split())[0]] == 'Rock':
+        if encrypt[(split_pairs[i].split())[1]] == 'Lose': 
+            score += 3
+        elif encrypt[(split_pairs[i].split())[1]] == 'Draw':
+            score += 4
+        elif encrypt[(split_pairs[i].split())[1]] == 'Win':
+            score += 8
+
+    elif encrypt[(split_pairs[i].split())[0]] == 'Paper':
+        if encrypt[(split_pairs[i].split())[1]] == 'Lose': 
+            score += 1
+        elif encrypt[(split_pairs[i].split())[1]] == 'Draw':
+            score += 5
+        elif encrypt[(split_pairs[i].split())[1]] == 'Win':
+            score += 9
+
+    elif encrypt[(split_pairs[i].split())[0]] == 'Scizzors':
+        if encrypt[(split_pairs[i].split())[1]] == 'Lose': 
+            score += 2
+        elif encrypt[(split_pairs[i].split())[1]] == 'Draw':
+            score += 6
+        elif encrypt[(split_pairs[i].split())[1]] == 'Win':
+            score += 7
+
+score
+
+file_02.close()
